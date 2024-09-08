@@ -25,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AD5291552C8D8BBA00248A34 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		AD86C11F2C8C40A600A82DA0 /* samsung */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = samsung; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD86C1222C8C40A600A82DA0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AD86C1292C8C40E800A82DA0 /* Movie.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Movie.cpp; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 				AD86C12C2C8C412C00A82DA0 /* Customer.cpp */,
 				AD86C12D2C8C412C00A82DA0 /* Customer.h */,
 				AD86C12F2C8C415F00A82DA0 /* Rental.h */,
+				AD5291552C8D8BBA00248A34 /* readme.md */,
 			);
 			path = samsung;
 			sourceTree = "<group>";
