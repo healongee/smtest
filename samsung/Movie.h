@@ -9,6 +9,9 @@ public:
   static const int REGULAR     = 0;
   static const int NEW_RELEASE = 1;
 
+  // add example_genre, price code is 3
+  static const int EXAMPLE_GENRE = 3;
+    
   Movie( const std::string& title, int priceCode = REGULAR );
 
   int getPriceCode() const;
