@@ -23,5 +23,5 @@ int main()
 
     cout << customer.statement() << endl;
 
-    return 0;
+    return 0; //test
 }
