@@ -4,6 +4,9 @@
 
 #include <string>
 #include <vector>
+
+#include <iomanip>  // add iomanip for using std::setprecision
+
 #include "Rental.h"
 
 // The customer class represents the customer of the store

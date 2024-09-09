@@ -18,6 +18,8 @@ public:
   void setPriceCode( int arg );
   std::string getTitle() const;
 
+  std::string getGenre() const; // add get genre
+
 private:
   std::string movieTitle;
   int moviePriceCode;

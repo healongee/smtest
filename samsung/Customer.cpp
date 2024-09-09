@@ -18,6 +18,10 @@ std::string Customer::statement()
   std::ostringstream result;
   result << "Rental Record for " << getName() << "\n";
 
+  // add new receipt
+  std::ostringstream newReceiptFormat;
+  newReceiptFormat << "\n \n";
+    
   // Loop over customer's rentals
   for ( ; iter != iter_end; ++iter ) {
 
@@ -59,6 +63,13 @@ std::string Customer::statement()
     // Show figures for this rental
     result << "\t" << each.getMovie().getTitle() << "\t"
            << thisAmount << std::endl;
+      
+    // add new receipt format ex) 장르 제목 대여기간 가격
+    newReceiptFormat << each.getMovie().getGenre() << " "
+                     << each.getMovie().getTitle() << " "
+                     << each.getDaysRented() << "일 "
+                     << std::fixed << std::setprecision(2) << thisAmount << "\n";
+      
     totalAmount += thisAmount;
   }
 
@@ -67,5 +78,8 @@ std::string Customer::statement()
   result << "You earned " << frequentRenterPoints
          << " frequent renter points";
 
+  // add new receipt after origin receipt
+  result << newReceiptFormat.str();
+    
   return result.str();
 }
