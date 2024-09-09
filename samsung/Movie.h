@@ -36,4 +36,15 @@ inline void Movie::setPriceCode( int arg ) { moviePriceCode = arg; }
 
 inline std::string Movie::getTitle() const { return movieTitle; }
 
+// add get genre by moviePriceCode
+inline std::string Movie::getGenre() const {
+    switch (moviePriceCode) {
+        case REGULAR: return "REGULAR";
+        case NEW_RELEASE: return "NEW_RELEASE";
+        case CHILDRENS: return "CHILDRENS";
+        case EXAMPLE_GENRE: return "EXAMPLE_GENRE";
+        default: return "UNKNOWN_GENRE";
+    }
+}
+
 #endif // MOVIE_H
