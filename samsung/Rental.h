@@ -1,4 +1,4 @@
-// Rental.hh
+// Rental.h
 #ifndef RENTAL_H
 #define RENTAL_H
 #include "Movie.h"
