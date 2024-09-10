@@ -20,7 +20,7 @@ public:
   std::string getName() const;
 
   // Generate a statement for the customer
-  std::string statement();
+  std::string printStatement();
     
 private:
   std::string customerName;
@@ -30,7 +30,6 @@ private:
   int calculateFrequentRenterPoints(const Rental& rental) const;
   std::string oldRentalStatement(const Rental& rental, double amount) const;
   std::string newRentalStatement(const Rental& rental, double amount) const;
-    
 };
 
 inline Customer::Customer() {}

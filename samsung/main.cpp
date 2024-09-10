@@ -27,7 +27,7 @@ int main()
 
     customer.addRental({ exampleGenre1, 2 });  // add rental example genre
     
-    cout << customer.statement() << endl;
+    cout << customer.printStatement() << endl;
 
     return 0; //test
 }

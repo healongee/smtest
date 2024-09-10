@@ -87,22 +87,34 @@ using std::vector;
 //calculate rental amount
 double Customer::calculateAmount(const Rental& rental) const {
     double amount = 0.0;
+    //enhance readability of price info
+    double REGULAR_BASE_PRICE = 2;
+    double CHILDREN_BASE_PRICE = 1.5;
+
+    double REGULAR_BASIC_DAYS = 2;
+    double CHILDREN_BASIC_DAYS = 3;
+
+    double NEW_RELEASE_PRICE_PER_DAY = 3.0;
+    double EXAMPLE_GENRE_PRICE_PER_DAY = 4.0;
+    
+    double EXTRA_DAYS_PRICE = 1.5;
+    
     switch (rental.getMovie().getPriceCode()) {
         case Movie::REGULAR:
-            amount += 2.;
-            if (rental.getDaysRented() > 2)
-                amount += (rental.getDaysRented() - 2) * 1.5;
+            amount += REGULAR_BASE_PRICE;
+            if (rental.getDaysRented() > REGULAR_BASIC_DAYS)
+                amount += (rental.getDaysRented() - REGULAR_BASIC_DAYS) * EXTRA_DAYS_PRICE;
             break;
         case Movie::NEW_RELEASE:
-            amount += rental.getDaysRented() * 3;
+            amount += rental.getDaysRented() * NEW_RELEASE_PRICE_PER_DAY;
             break;
         case Movie::CHILDRENS:
-            amount += 1.5;
-            if (rental.getDaysRented() > 3)
-                amount += (rental.getDaysRented() - 3) * 1.5;
+            amount += CHILDREN_BASE_PRICE;
+            if (rental.getDaysRented() > CHILDREN_BASIC_DAYS)
+                amount += (rental.getDaysRented() - CHILDREN_BASIC_DAYS) * EXTRA_DAYS_PRICE;
             break;
         case Movie::EXAMPLE_GENRE:
-            amount += rental.getDaysRented() * 4;
+            amount += rental.getDaysRented() * EXAMPLE_GENRE_PRICE_PER_DAY;
             break;
     }
     return amount;
@@ -110,11 +122,11 @@ double Customer::calculateAmount(const Rental& rental) const {
 
 //calculate renter points
 int Customer::calculateFrequentRenterPoints(const Rental& rental) const {
-    int points = 1;  // basic point
+    int frequentRenterPoints = 1;  // basic point
     if ((rental.getMovie().getPriceCode() == Movie::NEW_RELEASE) && rental.getDaysRented() > 1) {
-        points++;
+        frequentRenterPoints++;
     } // Add bonus for a two day new release rental
-    return points;
+    return frequentRenterPoints;
 }
 
 std::string Customer::oldRentalStatement(const Rental& rental, double amount) const {
@@ -132,7 +144,7 @@ std::string Customer::newRentalStatement(const Rental& rental, double amount) co
     return result.str();
 }
 
-std::string Customer::statement() {
+std::string Customer::printStatement() {
     double totalAmount = 0.;
     int frequentRenterPoints = 0;
     std::ostringstream result;
