@@ -5,12 +5,21 @@
 
 class Movie {
 public:
-  static const int CHILDRENS   = 2;
-  static const int REGULAR     = 0;
-  static const int NEW_RELEASE = 1;
+  
+  //manage priceCode by enum
+  enum PriceCode {
+    REGULAR = 0,
+    NEW_RELEASE = 1,
+    CHILDRENS = 2,
+    EXAMPLE_GENRE = 3
+  };
+    
+  //static const int CHILDRENS   = 2;
+  //static const int REGULAR     = 0;
+  //static const int NEW_RELEASE = 1;
 
   // add example_genre, price code is 3
-  static const int EXAMPLE_GENRE = 3;
+  //static const int EXAMPLE_GENRE = 3;
     
   Movie( const std::string& title, int priceCode = REGULAR );
 
