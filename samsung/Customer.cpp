@@ -1,10 +1,13 @@
 // Customer.cpp
-#include <sstream>
-#include <vector>
-#include "Customer.h"
 
-using std::ostringstream;
-using std::vector;
+//#include <sstream>
+//#include <vector>
+
+#include "Customer.h"
+#include "Statement.h"
+
+//using std::ostringstream;
+//using std::vector;
 
 //separate statement()
 //std::string Customer::statement(){
@@ -85,83 +88,88 @@ using std::vector;
 //}
 
 //calculate rental amount
-double Customer::calculateAmount(const Rental& rental) const {
-    double amount = 0.0;
-    //enhance readability of price info
-    double REGULAR_BASE_PRICE = 2;
-    double CHILDREN_BASE_PRICE = 1.5;
-
-    double REGULAR_BASIC_DAYS = 2;
-    double CHILDREN_BASIC_DAYS = 3;
-
-    double NEW_RELEASE_PRICE_PER_DAY = 3.0;
-    double EXAMPLE_GENRE_PRICE_PER_DAY = 4.0;
-    
-    double EXTRA_DAYS_PRICE = 1.5;
-    
-    switch (rental.getMovie().getPriceCode()) {
-        case Movie::REGULAR:
-            amount += REGULAR_BASE_PRICE;
-            if (rental.getDaysRented() > REGULAR_BASIC_DAYS)
-                amount += (rental.getDaysRented() - REGULAR_BASIC_DAYS) * EXTRA_DAYS_PRICE;
-            break;
-        case Movie::NEW_RELEASE:
-            amount += rental.getDaysRented() * NEW_RELEASE_PRICE_PER_DAY;
-            break;
-        case Movie::CHILDRENS:
-            amount += CHILDREN_BASE_PRICE;
-            if (rental.getDaysRented() > CHILDREN_BASIC_DAYS)
-                amount += (rental.getDaysRented() - CHILDREN_BASIC_DAYS) * EXTRA_DAYS_PRICE;
-            break;
-        case Movie::EXAMPLE_GENRE:
-            amount += rental.getDaysRented() * EXAMPLE_GENRE_PRICE_PER_DAY;
-            break;
-    }
-    return amount;
-}
-
+//double Customer::calculateAmount(const Rental& rental) const {
+//    double amount = 0.0;
+//    //enhance readability of price info
+//    double REGULAR_BASE_PRICE = 2;
+//    double CHILDREN_BASE_PRICE = 1.5;
+//
+//    double REGULAR_BASIC_DAYS = 2;
+//    double CHILDREN_BASIC_DAYS = 3;
+//
+//    double NEW_RELEASE_PRICE_PER_DAY = 3.0;
+//    double EXAMPLE_GENRE_PRICE_PER_DAY = 4.0;
+//
+//    double EXTRA_DAYS_PRICE = 1.5;
+//
+//    switch (rental.getMovie().getPriceCode()) {
+//        case Movie::REGULAR:
+//            amount += REGULAR_BASE_PRICE;
+//            if (rental.getDaysRented() > REGULAR_BASIC_DAYS)
+//                amount += (rental.getDaysRented() - REGULAR_BASIC_DAYS) * EXTRA_DAYS_PRICE;
+//            break;
+//        case Movie::NEW_RELEASE:
+//            amount += rental.getDaysRented() * NEW_RELEASE_PRICE_PER_DAY;
+//            break;
+//        case Movie::CHILDRENS:
+//            amount += CHILDREN_BASE_PRICE;
+//            if (rental.getDaysRented() > CHILDREN_BASIC_DAYS)
+//                amount += (rental.getDaysRented() - CHILDREN_BASIC_DAYS) * EXTRA_DAYS_PRICE;
+//            break;
+//        case Movie::EXAMPLE_GENRE:
+//            amount += rental.getDaysRented() * EXAMPLE_GENRE_PRICE_PER_DAY;
+//            break;
+//    }
+//    return amount;
+//}
+//
 //calculate renter points
-int Customer::calculateFrequentRenterPoints(const Rental& rental) const {
-    int frequentRenterPoints = 1;  // basic point
-    if ((rental.getMovie().getPriceCode() == Movie::NEW_RELEASE) && rental.getDaysRented() > 1) {
-        frequentRenterPoints++;
-    } // Add bonus for a two day new release rental
-    return frequentRenterPoints;
-}
-
-std::string Customer::oldRentalStatement(const Rental& rental, double amount) const {
-    std::ostringstream result;
-    result << "\t" << rental.getMovie().getTitle() << "\t" << amount << std::endl;
-    return result.str();
-}
-
-std::string Customer::newRentalStatement(const Rental& rental, double amount) const {
-    std::ostringstream result;
-    result << rental.getMovie().getGenre() << " "
-           << rental.getMovie().getTitle() << " "
-           << rental.getDaysRented() << "일 "
-           << std::fixed << std::setprecision(2) << amount << "\n";
-    return result.str();
-}
+//int Customer::calculateFrequentRenterPoints(const Rental& rental) const {
+//    int frequentRenterPoints = 1;  // basic point
+//    if ((rental.getMovie().getPriceCode() == Movie::NEW_RELEASE) && rental.getDaysRented() > 1) {
+//        frequentRenterPoints++;
+//    } // Add bonus for a two day new release rental
+//    return frequentRenterPoints;
+//}
+//
+//std::string Customer::oldRentalStatement(const Rental& rental, double amount) const {
+//    std::ostringstream result;
+//    result << "\t" << rental.getMovie().getTitle() << "\t" << amount << std::endl;
+//    return result.str();
+//}
+//
+//std::string Customer::newRentalStatement(const Rental& rental, double amount) const {
+//    std::ostringstream result;
+//    result << rental.getMovie().getGenre() << " "
+//           << rental.getMovie().getTitle() << " "
+//           << rental.getDaysRented() << "일 "
+//           << std::fixed << std::setprecision(2) << amount << "\n";
+//    return result.str();
+//}
+//
+//std::string Customer::printStatement() {
+//    double totalAmount = 0.;
+//    int frequentRenterPoints = 0;
+//    std::ostringstream result;
+//    result << "Rental Record for " << getName() << "\n";
+//    std::ostringstream newReceiptFormat;
+//    newReceiptFormat << "\n \n";
+//
+//    for (const Rental& each : customerRentals) {
+//        double thisAmount = calculateAmount(each);  // calculate amount
+//        frequentRenterPoints += calculateFrequentRenterPoints(each);  // calculate points
+//        result << oldRentalStatement(each, thisAmount);  // old statement
+//        newReceiptFormat << newRentalStatement(each, thisAmount);  // new statement
+//        totalAmount += thisAmount;
+//    }
+//
+//    result << "Amount owed is " << totalAmount << "\n";
+//    result << "You earned " << frequentRenterPoints << " frequent renter points\n";
+//    result << newReceiptFormat.str();  //append new receipt
+//    return result.str();
+//}
 
 std::string Customer::printStatement() {
-    double totalAmount = 0.;
-    int frequentRenterPoints = 0;
-    std::ostringstream result;
-    result << "Rental Record for " << getName() << "\n";
-    std::ostringstream newReceiptFormat;
-    newReceiptFormat << "\n \n";
-
-    for (const Rental& each : customerRentals) {
-        double thisAmount = calculateAmount(each);  // calculate amount
-        frequentRenterPoints += calculateFrequentRenterPoints(each);  // calculate points
-        result << oldRentalStatement(each, thisAmount);  // old statement
-        newReceiptFormat << newRentalStatement(each, thisAmount);  // new statement
-        totalAmount += thisAmount;
-    }
-
-    result << "Amount owed is " << totalAmount << "\n";
-    result << "You earned " << frequentRenterPoints << " frequent renter points\n";
-    result << newReceiptFormat.str();  //append new receipt
-    return result.str();
+    Statement statement;
+    return statement.generateStatement(customerRentals, getName());
 }

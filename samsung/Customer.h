@@ -19,17 +19,17 @@ public:
   void addRental( const Rental& arg );
   std::string getName() const;
 
-  // Generate a statement for the customer
+  // print a statement for the customer
   std::string printStatement();
     
 private:
   std::string customerName;
   std::vector< Rental > customerRentals;
 
-  double calculateAmount(const Rental& rental) const;
-  int calculateFrequentRenterPoints(const Rental& rental) const;
-  std::string oldRentalStatement(const Rental& rental, double amount) const;
-  std::string newRentalStatement(const Rental& rental, double amount) const;
+//  double calculateAmount(const Rental& rental) const;
+//  int calculateFrequentRenterPoints(const Rental& rental) const;
+//  std::string oldRentalStatement(const Rental& rental, double amount) const;
+//  std::string newRentalStatement(const Rental& rental, double amount) const;
 };
 
 inline Customer::Customer() {}
