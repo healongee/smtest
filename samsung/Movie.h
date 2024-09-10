@@ -38,7 +38,7 @@ private:
   //int moviePriceCode;
     
   PriceCode moviePriceCode; // PriceCode encapsulation
-  std::string genreMapper() const; // genre mapping method
+//  std::string genreMapper() const; // genre mapping method
     
 };
 
@@ -66,7 +66,22 @@ inline std::string Movie::getTitle() const { return movieTitle; }
 //}
 
 // genremapping method (using PriceCode)
-inline std::string Movie::genreMapper() const {
+//inline std::string Movie::genreMapper() const {
+//    switch (moviePriceCode) {
+//        case REGULAR: return "REGULAR";
+//        case NEW_RELEASE: return "NEW_RELEASE";
+//        case CHILDRENS: return "CHILDRENS";
+//        case EXAMPLE_GENRE: return "EXAMPLE_GENRE";
+//        default: return "UNKNOWN_GENRE";
+//    }
+//}
+
+//Genre getter
+//inline std::string Movie::getGenre() const {
+//    return genreMapper();
+//}
+
+inline std::string Movie::getGenre() const { //combine genreMapper & getGenre
     switch (moviePriceCode) {
         case REGULAR: return "REGULAR";
         case NEW_RELEASE: return "NEW_RELEASE";
@@ -74,11 +89,6 @@ inline std::string Movie::genreMapper() const {
         case EXAMPLE_GENRE: return "EXAMPLE_GENRE";
         default: return "UNKNOWN_GENRE";
     }
-}
-
-//Genre getter
-inline std::string Movie::getGenre() const {
-    return genreMapper();
 }
 
 #endif // MOVIE_H
