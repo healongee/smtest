@@ -21,13 +21,17 @@ public:
 
   // Generate a statement for the customer
   std::string statement();
-
+    
 private:
   std::string customerName;
   std::vector< Rental > customerRentals;
 
+  double calculateAmount(const Rental& rental) const;
+  int calculateFrequentRenterPoints(const Rental& rental) const;
+  std::string oldRentalStatement(const Rental& rental, double amount) const;
+  std::string newRentalStatement(const Rental& rental, double amount) const;
+    
 };
-
 
 inline Customer::Customer() {}
 
@@ -38,4 +42,4 @@ inline void Customer::addRental( const Rental& arg ) { customerRentals.push_back
 
 inline std::string Customer::getName() const { return customerName; }
 
-#endif // CUSTOMER_HH
+#endif // CUSTOMER_H
